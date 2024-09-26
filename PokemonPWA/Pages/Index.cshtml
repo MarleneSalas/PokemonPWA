@@ -22,21 +22,16 @@
                 </div>
             </template>
 
-            @* <div class="listitem">
-                <img class="icono" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png" />
-                <span class="numero">#010</span>
-                <span class="nombre">Caterpie</span>
-            </div> *@
 
         </section>
     </main>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/serviceworker.js?v=5');
+            navigator.serviceWorker.register('/serviceworker.js?v=6');
         }
 
         let plantilla = document.querySelector("template");
-        let listView = document.querySelector(".listitem");
+        let listView = document.querySelector(".listview");
 
         async function descargarPokemon() {
             let resp = await fetch("https://itesrc.net/api/pokemon");
@@ -45,8 +40,8 @@
                 for (var i = 0; i < 150; i++) {
                     let clone = plantilla.content.cloneNode(true);
                     clone.children[0].src = datos[i].icono;
-                    clone.children[1].textContent = datos[i].numero;
-                    clone.children[2].textContent = datos[i].nombre;
+                    // clone.children[1].textContent = datos[i].numero;
+                    // clone.children[2].textContent = datos[i].nombre;
                     listView.append(clone);
                 }
                 console.log(datos);
